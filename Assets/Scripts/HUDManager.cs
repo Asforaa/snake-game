@@ -16,8 +16,6 @@ public class HUDManager : MonoBehaviour
 
 	void Awake()
 	{
-		// Optional: Log to confirm awake
-		// Debug.Log("[HUDManager] Awake called.");
 
 		// Basic check on Awake to ensure assignments
 		if (scoreText == null)
@@ -78,10 +76,6 @@ public class HUDManager : MonoBehaviour
 			scoreText.text = "Score: " + newScore;
 			// Debug.Log($"[HUDManager] Score UI updated to: {newScore}");
 		}
-		// else
-		// {
-		// Debug.LogWarning("[HUDManager] Tried to update score UI, but scoreText is null.");
-		// }
 	}
 
 	private void ShowGameOverPanel()
@@ -98,14 +92,12 @@ public class HUDManager : MonoBehaviour
 
 		// Show the panel
 		gameOverPanel.SetActive(true);
-		Debug.Log("[HUDManager] Game Over panel shown.");
 	}
 
 	// --- Public Methods for Button OnClick Events ---
 
 	public void HandleRestartButton()
 	{
-		Debug.Log("[HUDManager] Restart button clicked.");
 		if (GameManager.Instance != null)
 		{
 			GameManager.Instance.LoadGameScene();
@@ -118,7 +110,6 @@ public class HUDManager : MonoBehaviour
 
 	public void HandleMainMenuButton()
 	{
-		Debug.Log("[HUDManager] Main Menu button clicked.");
 		// Ensure time scale is reset before going to main menu
 		Time.timeScale = 1f;
 		if (GameManager.Instance != null)

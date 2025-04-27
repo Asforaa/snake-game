@@ -8,7 +8,6 @@ public class MainMenuManager : MonoBehaviour
 		// Make sure the GameManager exists and can load the scene
 		if (GameManager.Instance != null)
 		{
-			Debug.Log("[MainMenuManager] Play button clicked. Loading Game scene...");
 			GameManager.Instance.LoadGameScene();
 		}
 		else
@@ -19,10 +18,9 @@ public class MainMenuManager : MonoBehaviour
 		}
 	}
 
-	// Optional: Add a QuitGame method if needed
+	// placeholder for QuitGame method later, too lazy to implement rn
 	// public void QuitGame()
 	// {
-	//     Debug.Log("[MainMenuManager] Quit button clicked.");
 	//     Application.Quit();
 	// }
 }

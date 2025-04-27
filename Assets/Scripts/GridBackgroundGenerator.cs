@@ -28,7 +28,7 @@ public class GridBackgroundGenerator : MonoBehaviour
 			return;
 		}
 
-		// Optionally clear old cells if regenerating
+		// clear old cells if regenerating
 		foreach (Transform child in transform)
 		{
 			if (Application.isPlaying) // Only destroy if running

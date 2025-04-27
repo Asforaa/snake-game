@@ -38,7 +38,6 @@ public class SnakeSegment : MonoBehaviour
 		{
 			Debug.LogWarning("Attempted to update sprite on segment with no SpriteRenderer.");
 		}
-		// No warning if newSprite is null, maybe intentional
 	}
 
 	private void UpdateVisualPosition()

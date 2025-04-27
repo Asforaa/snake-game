@@ -3,19 +3,14 @@ using UnityEngine;
 public class FoodSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject foodPrefab;
-    // private SnakeController snakeController; // We don't seem to use this reference, can remove if not needed
 
     private void Start()
     {
-        Debug.Log("[FoodSpawner] Start called.");
-        // snakeController = FindFirstObjectByType<SnakeController>(); // FindFirst is fine, but log if needed
-        // Debug.Log($"[FoodSpawner] Found SnakeController: {snakeController != null}");
         SpawnFood();
     }
 
     public void SpawnFood()
     {
-        Debug.Log("[FoodSpawner] SpawnFood called.");
         // Find a valid position that doesn't overlap with the snake
         Vector2Int spawnPosition;
         bool validPosition = false; // Initialize to false
@@ -25,8 +20,6 @@ public class FoodSpawner : MonoBehaviour
         do
         {
             spawnPosition = GridManager.Instance.GetRandomGridPosition();
-            // Consider adding a log here if IsValidFoodPosition is complex/failing
-            // Debug.Log($"[FoodSpawner] Attempt {attempts + 1}: Trying position {spawnPosition}");
             validPosition = IsValidFoodPosition(spawnPosition);
             attempts++;
         } while (!validPosition && attempts < maxAttempts);
@@ -35,7 +28,6 @@ public class FoodSpawner : MonoBehaviour
         {
             Vector2 worldPosition = GridManager.Instance.GridToWorldPosition(spawnPosition);
             Instantiate(foodPrefab, worldPosition, Quaternion.identity, transform);
-            Debug.Log($"[FoodSpawner] Food instantiated at grid position: {spawnPosition}");
         }
         else
         {
@@ -48,7 +40,6 @@ public class FoodSpawner : MonoBehaviour
         // Make sure it's within grid bounds
         if (!GridManager.Instance.IsValidGridPosition(position))
         {
-            // Debug.Log($"[FoodSpawner] Position {position} invalid: Out of bounds.");
             return false;
         }
 
@@ -64,12 +55,10 @@ public class FoodSpawner : MonoBehaviour
         {
             if (collider.CompareTag("Snake") || collider.CompareTag("SnakeSegment"))
             {
-                // Debug.Log($"[FoodSpawner] Position {position} invalid: Overlaps with {collider.tag} ({collider.gameObject.name}).");
                 return false;
             }
         }
 
-        // Debug.Log($"[FoodSpawner] Position {position} is valid.");
         return true;
     }
 }

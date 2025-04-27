@@ -49,7 +49,7 @@ public class GridManager : MonoBehaviour
         );
     }
 
-    // Draw grid in editor for visualization
+    // Draw grid in editor for visualization only
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.gray;
